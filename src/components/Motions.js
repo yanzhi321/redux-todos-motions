@@ -13,6 +13,7 @@ class Item extends Component {
 	
 	  this.state = {
 	  	edit: false,
+	  	message: "red"
 	  }
 	}
 
@@ -20,19 +21,13 @@ class Item extends Component {
 		const { id } = this.props.item
 		const { actions } = this.props
 		actions.deleteTodo(id)
-		/*this.setState({
-			edit: false
-		})*/
+		
 		//delete
 		//console.log(id);
 		//console.log(actions)
 	}
 
-	/*_handleClickEdit = () => {
-		this.setState({
-			edit: true
-		})
-	}*/
+	
 
 	_onKeyUp = e => {
 		e.keyCode === 13 && this._handler()
@@ -71,22 +66,11 @@ class Item extends Component {
 						onTouchStart={onTouchStart}
 						style={style}
 					>
-						{/*<e className="edit" onClick={this._handleClickEdit}>{item.id}---{item.text}</e>
-						{edit ? (
-							<input
-								autoFocus
-								ref='edit'
-								className='edit_input'
-								placeholder={item.text}
-								onKeyUp={this._onKeyUp}
-							/>
-						) : (
-							<p className='item_text'>{item.text}</p>
-						)}*/}
+						
 						<span className="edit"> {item.id}--{this.props.order}--{item.text} </span>
 						<button className="destroy" onClick={this._handleClickDelete}></button>
 					</div>
-			</div>
+				</div>
 		);
 	}
 }
@@ -127,34 +111,7 @@ export default class Motions extends Component {
 	}
 
 	componentWillMount() {
-		/*const { ListItem, order, topDeltaY, mouseY, isPressed, originalPosOfLastPressed } = this.state
-
-		this.record.set('ListItem', {
-			ListItem: ListItem,
-		})
-		this.record.set('order', {
-			order: order,
-		})
-		this.record.set('topDeltaY', {
-			topDeltaY: topDeltaY,
-		})
-		this.record.set('mouseY', {
-			mouseY: mouseY,
-		})
-		this.record.set('isPressed', {
-			isPressed: isPressed,
-		})
-		this.record.set('originalPosOfLastPressed', {
-			originalPosOfLastPressed: originalPosOfLastPressed
-		})*/
-		// this.record.set({
-		// 	ListItem: ListItem,
-		// 	order: order,
-		// 	topDeltaY: topDeltaY,
-		// 	mouseY: mouseY,
-		// 	isPressed: isPressed,
-		// 	originalPosOfLastPressed: originalPosOfLastPressed
-		// })
+		//component will loading
 	}
 
 
@@ -164,69 +121,14 @@ export default class Motions extends Component {
 	    window.addEventListener('mousemove', this.handleMouseMove);
 	    window.addEventListener('mouseup', this.handleMouseUp);
 
-	    /*this.record.subscribe('ListItem', data => {
-	    	this.setState({
-	    		ListItem: data.ListItem,
-	    	})
-	    })
-	    this.record.subscribe('order', data => {
-	    	this.setState({
-	    		order: data.order,
-	    	})
-	    })
-	    this.record.subscribe('topDeltaY', data => {
-	    	this.setState({
-	    		topDeltaY: data.topDeltaY,
-	    	})
-	    })
-	    this.record.subscribe('mouseY', data => {
-	    	this.setState({
-	    		mouseY: data.mouseY,
-	    	})
-	    })
-	    this.record.subscribe('isPressed', data => {
-	    	this.setState({
-	    		isPressed: data.isPressed,
-	    	})
-	    })
-	    this.record.subscribe('originalPosOfLastPressed', data => {
-	    	this.setState({
-	    		originalPosOfLastPressed: data.originalPosOfLastPressed
-	    	})
-	    })*/
-
-	 //    this.record.subscribe(data => {
-		// 	this.setState({
-		// 		ListItem: data.ListItem,
-		// 		order: data.order,
-		// 		topDeltaY: data.topDeltaY,
-		// 		mouseY: data.mouseY,
-		// 		isPressed: data.isPressed,
-		// 		originalPosOfLastPressed: data.originalPosOfLastPressed
-		// 	})
-		// })
+	    
 	}
 	
 	
 	//component will update
 	componentWillUpdate(nextProps, nextState) {
 		const { actions } = this.props
-		//console.log( nextProps)
-		//console.log("init-order---" + this.state.order)
-		//console.log(nextProps.ListItem)
-		/*
-		 * edit Item
-		 */
-		/*if (nextProps.ListItem !== this.props.ListItem && nextProps.ListItem.length === this.props.ListItem.length) {
-
-			this.record.set('ListItem', {
-				ListItem: nextProps.ListItem
-			})
-		}*/
-
-		/*
-		 * add one Item
-		 */
+		//add
 		if (nextProps.ListItem.length > this.props.ListItem.length) {
 
 			console.log('nextProps--',nextProps.order)
@@ -256,23 +158,7 @@ export default class Motions extends Component {
 			
 		}
 
-		/*if (nextProps.order.length > this.props.order.length) {
-
-			this.record.set('ListItem', {
-				ListItem: nextProps.ListItem,
-				// order: nextProps.order
-			})
-
-			this.record.set('order', {
-				order: nextProps.order
-			})
-			///console.log(nextProps.order)
-		}
-*/
-
-		/*
-		 * delete one Item
-		 */
+		//delete
 		if (nextProps.ListItem.length < this.props.ListItem.length) {
 			//console.log(nextState)
 
@@ -323,34 +209,16 @@ export default class Motions extends Component {
 		}
 
 
-		/*if (nextProps.order.length < this.props.order.length) {
-
-			this.record.set('ListItem', {
-				ListItem: nextProps.ListItem,
-				// order: nextProps.order
-			})
-
-			this.record.set('order', {
-				order: nextProps.order
-			})
-		}*/
-		
 		//console.log(nextProps.ListItem)
 		//console.log(nextProps.order)
+
 		//remove All
 		if (nextProps.ListItem.length == 0){
 			
 			let new_order = nextState.order.splice(0, nextState.order.length);
 			//actions.changeOrder(new_order)
-			
 			console.log(new_order)
-			//console.log(nextProps.order)
-			//setState
-			/*this.setState({
-				ListItem: nextProps.ListItem
-			})*/
 			
-
 		}
 		
 		
@@ -369,25 +237,7 @@ export default class Motions extends Component {
 		      originalPosOfLastPressed: pos
 	    });
 		
-		/*this.record.set('topDeltaY', {
-			topDeltaY: pageY - pressY,
-		})
-		this.record.set('mouseY', {
-			mouseY: pressY,
-		})
-		this.record.set('isPressed', {
-			isPressed: true,
-		})
-		this.record.set('originalPosOfLastPressed', {
-			originalPosOfLastPressed: pos
-		})*/
-
-		// this.record.set({
-		// 	topDeltaY: pageY - pressY,
-	 //      	mouseY: pressY,
-	 //      	isPressed: true,
-	 //      	originalPosOfLastPressed: pos
-		// })
+		
 	}
 
 	handleTouchMove = (e) => {
@@ -429,17 +279,6 @@ export default class Motions extends Component {
 			
 			//console.log("newOrder---"+ newOrder)
 			
-//			 this.record.set({
-//			 	mouseY: mouseY,
-//			 	order: order
-//			 })
-
-			/*this.record.set('mouseY', {
-				mouseY: mouseY,
-			})
-				this.record.set('order', {
-				order: order
-			})*/
 	    }
 	  }
 
@@ -449,17 +288,6 @@ export default class Motions extends Component {
 		 	topDeltaY: 0
 		 })
 
-		 /*this.record.set({
-		 	isPressed: false,
-		 	topDeltaY: 0
-		 })*/
-
-//		this.record.set('isPressed', {
-//			isPressed: false,
-//		})
-//		this.record.set('topDeltaY', {
-//			topDeltaY: 0
-//		})
   	}
 
 	render() {
@@ -491,16 +319,16 @@ export default class Motions extends Component {
 								
 				              	<Item
 				              		item={item}
-				              		actions={actions}
+				              		actions={this.props.actions}
 				              		key={i}
 				              		onMouseDown={this.handleMouseDown.bind(null, item.id, y)}
 				                  	onTouchStart={this.handleTouchStart.bind(null, item.id, y)}
 				                  	style={{
-				                    boxShadow: `rgba(0, 0, 0, 0.2) 0px ${shadow}px ${2 * shadow}px 0px`,
-				                    transform: `translate3d(0, ${y}px, 0) scale(${scale})`,
-				                    WebkitTransform: `translate3d(0, ${y}px, 0) scale(${scale})`,
-				                    zIndex: item.id === originalPosOfLastPressed ? 99 : item.id
-				                  }}
+					                    boxShadow: `rgba(0, 0, 0, 0.2) 0px ${shadow}px ${2 * shadow}px 0px`,
+					                    transform: `translate3d(0, ${y}px, 0) scale(${scale})`,
+					                    WebkitTransform: `translate3d(0, ${y}px, 0) scale(${scale})`,
+					                    zIndex: item.id === originalPosOfLastPressed ? 99 : item.id
+				                  	}}
 				                  
 				              	/>
 				              	

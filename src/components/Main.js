@@ -19,13 +19,9 @@ class Main extends React.Component {
 			text: 'enter data',
 		}
 
-		//this.ds = deepstream('wss://035.deepstreamhub.com?apiKey=88608cc8-5ece-419f-ad20-0b21d70c7526')
-		//this.client = this.ds.login()
-
-        //this.record = this.client.record.getRecord('text')
 	}
 
-	//component
+	//component will loading
 	componentWillMount() {
 
 		/*this.record.set({
@@ -46,12 +42,6 @@ class Main extends React.Component {
 		
 		e.keyCode === 13 && this._addData()
 		//console.log(e.target.value)
-		
-		/*this.record.set({
-			text: this.refs.input.value
-		})*/
-		//e.target.value = ''
-		
 		this.setState({
 			text: ''
 		})
@@ -59,7 +49,8 @@ class Main extends React.Component {
 	}
 	_addData = (e) => {
 		
-		
+		console.log(this.props)
+
 		const { actions } = this.props
 		let inputValue = this.refs.myInput.value
 		//alert
@@ -88,12 +79,6 @@ class Main extends React.Component {
 		actions.removeTodo(todos)
 		const inputValue = this.refs.myInput.value = ''
 		
-		/*this.record.set({
-			text: ''
-		})
-		this.record.set('todos', {
-			todos: []
-		})*/
 		//console.log(todos)
 		this.setState({
 			text: inputValue,
@@ -106,7 +91,6 @@ class Main extends React.Component {
 		
 	}
 
-	
 	render() {
 		const { todos, order, actions } = this.props
 		const { text } = this.state
