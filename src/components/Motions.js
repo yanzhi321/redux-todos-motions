@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import {Motion, spring} from 'react-motion';
 
-import deepstream from 'deepstream.io-client-js'
+// import deepstream from 'deepstream.io-client-js'
 
 import  '../static/css/basic.css';
 
@@ -12,7 +12,6 @@ class Item extends Component {
 	  super(props);
 	
 	  this.state = {
-	  	edit: false,
 	  	message: "red"
 	  }
 	}
@@ -52,7 +51,6 @@ class Item extends Component {
 	render() {
 		const { item } = this.props
 		const { onMouseDown, onTouchStart, style } = this.props
-		const { edit } = this.state
 		//console.log(order)
 		return (
 				<div>
@@ -120,10 +118,19 @@ export default class Motions extends Component {
 	    window.addEventListener('touchend', this.handleMouseUp);
 	    window.addEventListener('mousemove', this.handleMouseMove);
 	    window.addEventListener('mouseup', this.handleMouseUp);
-
 	    
 	}
-	
+    
+    //remove dom
+    componentWillUnmount(){  
+        
+        //clear dom operator in componentDidMount period
+        window.removeEventListener('touchmove', this.handleTouchMove)
+        window.removeEventListener('touchend', this.handleMouseUp)
+        window.removeEventListener('mousemove', this.handleMouseMove)
+        window.removeEventListener('mouseup', this.handleMouseUp)
+        
+    } 
 	
 	//component will update
 	componentWillUpdate(nextProps, nextState) {
@@ -186,26 +193,26 @@ export default class Motions extends Component {
 			})
 			console.log(nextProps.order)
 			
-		//forEach  index = i
-		//todos中的index 和order中的i对应
-			/*let index = -1;
-			nextProps.ListItem.forEach(({time}, i) => {
-				if (time === action.text) {
-					index = i;
-				}
-			});
-			
-			//how to delete 
-			const newTodos = [...this.state.todos.slice(0, index), ...this.state.todos.slice(index + 1, this.state.todos.length)];
-	
-			const inOrderIndex = this.state.order.indexOf(index);
-			let newOrder = [...this.state.order.slice(0, inOrderIndex), ...this.state.order.slice(inOrderIndex + 1, this.state.order.length)];
-			newOrder = newOrder.map(i => {
-				if (i > index) {
-					return i - 1;
-				}
-				return i;
-			});*/
+            //forEach  index = i
+            //todos中的index 和order中的i对应
+                /*let index = -1;
+                nextProps.ListItem.forEach(({time}, i) => {
+                    if (time === action.text) {
+                        index = i;
+                    }
+                });
+                
+                //how to delete 
+                const newTodos = [...this.state.todos.slice(0, index), ...this.state.todos.slice(index + 1, this.state.todos.length)];
+        
+                const inOrderIndex = this.state.order.indexOf(index);
+                let newOrder = [...this.state.order.slice(0, inOrderIndex), ...this.state.order.slice(inOrderIndex + 1, this.state.order.length)];
+                newOrder = newOrder.map(i => {
+                    if (i > index) {
+                        return i - 1;
+                    }
+                    return i;
+                });*/
 		}
 
 
@@ -213,7 +220,7 @@ export default class Motions extends Component {
 		//console.log(nextProps.order)
 
 		//remove All
-		if (nextProps.ListItem.length == 0){
+		if (nextProps.ListItem.length === 0){
 			
 			let new_order = nextState.order.splice(0, nextState.order.length);
 			//actions.changeOrder(new_order)
@@ -250,7 +257,7 @@ export default class Motions extends Component {
   		//判断是浏览器还是手机
   		 const a = navigator.userAgent;
     	//use navigator to judge browser or ios & android,
-	    if(a.indexOf("Android")!=-1 || a.indexOf("iPhone")!=-1 || a.indexOf("iPad")!=-1 ){
+	    if(a.indexOf("Android") !== -1 || a.indexOf("iPhone") !== -1 || a.indexOf("iPad") !== -1 ){
 				
 	         //console.log('this is ios & Android & iPad')
 		
@@ -291,9 +298,9 @@ export default class Motions extends Component {
   	}
 
 	render() {
-		const { actions, order } = this.props
+		const { order } = this.props
 		const { ListItem, mouseY, isPressed, originalPosOfLastPressed } = this.state
-		const state_order = this.state.order;
+		// const state_order = this.state.order;
 		//console.log("props_order", order)
 		//console.log("state_order", state_order)
 		

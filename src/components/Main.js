@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as TodoActions from '../actions'
 
-import deepstream from 'deepstream.io-client-js'
+// import deepstream from 'deepstream.io-client-js'
 
 import clock from '../static/swf/honehone_clock_wh.swf'
 import '../static/css/basic.css'
@@ -54,7 +54,7 @@ class Main extends React.Component {
 		const { actions } = this.props
 		let inputValue = this.refs.myInput.value
 		//alert
-		if(inputValue == ''){
+		if(inputValue === ''){
 			alert("please input")
 			return false;
 		}
@@ -69,7 +69,7 @@ class Main extends React.Component {
 		//focus() 获取焦点
 		const myInput = this.refs.myInput
 		myInput.focus()
-		//console.log('inputValue--'+inputValue)		
+				
 	}
 	
 	//removeData
@@ -79,7 +79,7 @@ class Main extends React.Component {
 		actions.removeTodo(todos)
 		const inputValue = this.refs.myInput.value = ''
 		
-		//console.log(todos)
+		
 		this.setState({
 			text: inputValue,
 			todos: []
@@ -93,11 +93,7 @@ class Main extends React.Component {
 
 	render() {
 		const { todos, order, actions } = this.props
-		const { text } = this.state
-		/*todos.map( (con,i) => {
-			console.log(con.id);
-		} )*/
-		//console.log(actions);
+		
 		return (
 			<div className='container'>
 				<div style={{width:300, height:150, border:'1px solid #ccc', background:"#fff", position:'absolute', bottom: 50, left: 50 }}>

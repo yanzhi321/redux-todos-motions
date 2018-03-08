@@ -1,4 +1,22 @@
-# Redux TodoMotions Example
+#One example of react && redux && react-motion 
+todolist use react && redux 
+
+##Run
+
+```run
+
+    npm i || cnpm i || nrm ls => nrm use cnpm 
+
+    npm start
+
+    localhost:3000
+
+```
+
+##Source Link
+[https://github.com/chenglou/react-motion](https://github.com/chenglou/react-motion)
+
+## Redux TodoMotions Example
 
 This project template was built with [Create React App](https://github.com/facebookincubator/create-react-app), which provides a simple way to start React projects with no build configuration needed.
 
