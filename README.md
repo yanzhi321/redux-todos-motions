@@ -1,7 +1,8 @@
-#One example of react && redux && react-motion 
+# One example of react && redux && react-motion 
+
 todolist use react && redux 
 
-##Run
+## `Run`
 
 ```run
 
@@ -13,7 +14,8 @@ todolist use react && redux
 
 ```
 
-##Source Link
+## `Source Link`
+
 [https://github.com/chenglou/react-motion](https://github.com/chenglou/react-motion)
 
 ## Redux TodoMotions Example
